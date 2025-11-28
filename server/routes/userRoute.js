@@ -4,11 +4,12 @@ import {
   login,
   signup,
 } from "../controllers/userController.js";
+import { limiter } from "../middleware/rateLimiter.js";
 
 const router = express.Router();
 
-router.post("/signup", signup);
-router.post("/login", login);
-router.post("/:id", getUserProfile);
+router.post("/signup", limiter, signup);
+router.post("/login", limiter, login);
+router.get("/:id", getUserProfile);
 
 export default router;

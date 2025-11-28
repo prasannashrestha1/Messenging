@@ -17,5 +17,3 @@ connectToDB().then(
 );
 
 app.use("/api/users", userRouter);
-
-app.use((err, req, res, nex));
